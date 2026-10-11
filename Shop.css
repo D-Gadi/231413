@@ -1,0 +1,133 @@
+.stranica-kataloga {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.zagolovok-kataloga {
+  font-size: 48px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.zagolovok-kataloga::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 70%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  box-shadow: 0 0 12px var(--neon-glow);
+  transform: translateX(-50%) scaleX(0);
+  animation: liniyaRost 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+
+@keyframes liniyaRost {
+  from { transform: translateX(-50%) scaleX(0); }
+  to { transform: translateX(-50%) scaleX(1); }
+}
+
+.podzagolovok-kataloga {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.filtry-kataloga {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.filtry-kataloga button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.filtry-kataloga button:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 14px var(--neon-glow);
+}
+
+.filtry-kataloga button.aktivniy-filtr {
+  background: var(--neon);
+  border-color: var(--neon);
+  color: #0a0a0c;
+  box-shadow: 0 0 14px var(--neon-glow);
+}
+
+.filtry-kataloga button:active {
+  transform: scale(0.94);
+}
+
+.setka-kataloga {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.setka-kataloga.revealed .kartochka-tovara {
+  animation: kartochkaVhod 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.setka-kataloga.revealed .kartochka-tovara:nth-child(1) { animation-delay: 0s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(2) { animation-delay: 0.06s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(3) { animation-delay: 0.12s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(4) { animation-delay: 0.18s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(5) { animation-delay: 0.24s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(6) { animation-delay: 0.3s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(7) { animation-delay: 0.36s; }
+.setka-kataloga.revealed .kartochka-tovara:nth-child(8) { animation-delay: 0.42s; }
+
+.setka-kataloga .sekciya-tovarov {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .zagolovok-kataloga {
+    font-size: 34px;
+  }
+
+  .setka-kataloga {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zagolovok-kataloga {
+    font-size: 28px;
+  }
+
+  .setka-kataloga {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

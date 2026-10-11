@@ -1,0 +1,336 @@
+.glavniy-baner {
+  background:
+    radial-gradient(800px 500px at 20% -10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(700px 500px at 95% 20%, rgba(255, 255, 255, 0.04), transparent 60%),
+    var(--bg-deep);
+  padding: 40px 20px 0 20px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.aura {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aura-1 {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -100px;
+  background: rgba(255, 255, 255, 0.08);
+  animation: parivanie 12s ease-in-out infinite;
+}
+
+.aura-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -160px;
+  right: 8%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: parivanie 16s ease-in-out infinite reverse;
+}
+
+@keyframes parivanie {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(46px, 34px) scale(1.12);
+  }
+}
+
+.vnutri-banera {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.levaya-chast {
+  flex: 1;
+  padding-bottom: 40px;
+}
+
+.levaya-chast > * {
+  opacity: 0;
+  animation: vhodElementa 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.levaya-chast .ogromniy-zagolovok { animation-delay: 0.1s; }
+.levaya-chast .malenkiy-text { animation-delay: 0.35s; }
+.levaya-chast .knopka-v-magazine { animation-delay: 0.55s; }
+.levaya-chast .nashi-cifri { animation-delay: 0.75s; }
+
+@keyframes vhodElementa {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ogromniy-zagolovok {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.ogromniy-zagolovok span {
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon-glow);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.migayushchiy-kursor {
+  margin-left: 4px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff;
+  animation: miganie-kursora 0.6s step-end infinite;
+}
+
+@keyframes miganie-kursora {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .levaya-chast > * {
+    opacity: 1;
+    animation: none;
+  }
+  .aura,
+  .knopka-v-magazine::before {
+    animation: none;
+  }
+}
+
+.malenkiy-text {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.deystviya-geroya {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.knopka-v-magazine {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--neon), var(--red-deep));
+  color: #0a0a0c;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 0 22px var(--neon-glow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.knopka-v-magazine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28);
+  animation: puls-knopki 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes puls-knopki {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.knopka-v-magazine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(10, 10, 12, 0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.knopka-v-magazine:hover::after {
+  left: 150%;
+}
+
+.knopka-v-magazine:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 32px var(--neon-glow);
+}
+
+.telegram-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--surface-2), var(--card));
+  text-decoration: none;
+  color: var(--text);
+  max-width: 420px;
+  flex: 1 1 300px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.telegram-banner:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 24px var(--neon-glow);
+  transform: translateY(-2px);
+}
+
+.telegram-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-20deg);
+  animation: perelivanie-banera 2.8s ease-in-out infinite;
+}
+
+@keyframes perelivanie-banera {
+  0% { left: -70%; }
+  55%, 100% { left: 130%; }
+}
+
+.telegram-znachok {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3a3a44, #26262c);
+  color: var(--text-muted);
+  font-size: 22px;
+  box-shadow: 0 0 14px var(--neon-glow);
+  animation: telegram-pereliv 2.8s ease-in-out infinite;
+}
+
+@keyframes telegram-pereliv {
+  0%, 100% { filter: brightness(1) saturate(1); box-shadow: 0 0 12px var(--neon-glow); }
+  50% { filter: brightness(1.5) saturate(1); box-shadow: 0 0 26px var(--neon-glow); }
+}
+
+.telegram-text {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .ogromniy-zagolovok {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 900px) {
+  .vnutri-banera {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .krov-v-geroe .kaplya:nth-child(2),
+  .krov-v-geroe .kaplya:nth-child(3),
+  .krov-v-geroe .kaplya:nth-child(5) {
+    display: none;
+  }
+
+  .ogromniy-zagolovok {
+    font-size: 38px;
+  }
+
+  .malenkiy-text {
+    margin: 0 auto 30px auto;
+  }
+
+  .deystviya-geroya {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .glavniy-baner {
+    padding: 30px 16px 0 16px;
+  }
+
+  .ogromniy-zagolovok {
+    font-size: 24px;
+  }
+
+  .malenkiy-text {
+    font-size: 14px;
+  }
+
+  .knopka-v-magazine {
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+
+  .telegram-banner {
+    padding: 10px 16px;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .telegram-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ogromniy-zagolovok {
+    font-size: 19px;
+  }
+
+  .telegram-znachok {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .telegram-text {
+    font-size: 12px;
+  }
+}

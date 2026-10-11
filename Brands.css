@@ -1,0 +1,111 @@
+.polosa-brendov {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(800px 300px at 15% 50%, rgba(255, 255, 255, 0.035), transparent 65%),
+    radial-gradient(800px 300px at 85% 50%, rgba(255, 255, 255, 0.03), transparent 65%),
+    var(--bg-deep);
+}
+
+.polosa-brendov::before,
+.polosa-brendov::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.polosa-brendov::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-deep), transparent);
+}
+
+.polosa-brendov::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg-deep), transparent);
+}
+
+.polosa-brendov:hover .begushchie-brendi {
+  animation-play-state: paused;
+}
+
+.vnutri-brendov {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.begushchie-brendi {
+  display: flex;
+  gap: 90px;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: llevutBrendi 30s linear infinite;
+}
+
+@keyframes llevutBrendi {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.begushchie-brendi span {
+  flex-shrink: 0;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+  opacity: 0.85;
+  cursor: default;
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    text-shadow 0.25s ease, background 0.25s ease, -webkit-text-stroke 0.25s ease;
+}
+
+.begushchie-brendi span:hover {
+  opacity: 1;
+  transform: scale(1.06) translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-text-stroke: 1px #ffffff;
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.65), 0 0 60px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .polosa-brendov {
+    padding: 30px 0;
+  }
+
+  .begushchie-brendi {
+    gap: 60px;
+  }
+
+  .begushchie-brendi span {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .polosa-brendov {
+    padding: 24px 0;
+  }
+
+  .begushchie-brendi {
+    gap: 45px;
+  }
+
+  .begushchie-brendi span {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+}

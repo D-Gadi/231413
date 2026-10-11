@@ -1,0 +1,432 @@
+.sekciya-tovarov {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.zagolovok-sekcii {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.zagolovok-sekcii::after {
+  content: ' ✦';
+  color: var(--neon);
+  text-shadow: 0 0 16px var(--neon-glow);
+  display: inline-block;
+  animation: mertsanie 2.4s ease-in-out infinite;
+}
+
+@keyframes mertsanie {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.5; transform: scale(1.25) rotate(15deg); }
+}
+
+.zagolovok-sekcii::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 70%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+.sekciya-tovarov.revealed .zagolovok-sekcii::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.setka-tovarov {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.sekciya-tovarov.revealed .kartochka-tovara {
+  animation: kartochkaVhod 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(1) { animation-delay: 0s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(2) { animation-delay: 0.08s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(3) { animation-delay: 0.16s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(4) { animation-delay: 0.24s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(5) { animation-delay: 0.32s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(6) { animation-delay: 0.4s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(7) { animation-delay: 0.48s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(8) { animation-delay: 0.56s; }
+
+@keyframes kartochkaVhod {
+  from {
+    opacity: 0;
+    transform: translateY(34px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.kartochka-tovara a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.kartochka-tovara {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kartochka-tovara:hover {
+  transform: translateY(-6px);
+}
+
+.kartochka-tovara:hover .fon-kartinki {
+  border-color: var(--neon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 24px var(--neon-glow);
+}
+
+.kartochka-tovara:hover h3 {
+  color: var(--neon);
+}
+
+.fon-kartinki {
+  background: linear-gradient(180deg, var(--surface-2), var(--card));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+.fon-kartinki::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(300px 200px at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.kartochka-tovara:hover .fon-kartinki::before {
+  opacity: 1;
+}
+
+.fon-kartinki::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.kartochka-tovara:hover .fon-kartinki::after {
+  left: 160%;
+}
+
+.knopki-kartochki {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.kartochka-tovara:hover .knopki-kartochki {
+  opacity: 1;
+}
+
+.znachok-kartochki {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.znachok-kartochki:hover {
+  transform: scale(1.1);
+  color: var(--neon);
+  box-shadow: 0 0 14px var(--neon-glow);
+}
+
+.znachok-kartochki:active {
+  transform: scale(0.9);
+}
+
+.znachok-kartochki .icon-filled-red {
+  color: var(--neon);
+  text-shadow: 0 0 12px var(--neon-glow);
+}
+
+.kartochka-tovara h3 {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.nazvanie-skoroo {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 900;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 0 18px var(--neon-glow);
+}
+
+.nazvanie-skoroo .tochki-skoroo i {
+  font-style: normal;
+  display: inline-block;
+  animation: pryzhok-tochki 1.4s ease-in-out infinite;
+}
+
+.nazvanie-skoroo .tochki-skoroo i:nth-child(1) { animation-delay: 0s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(2) { animation-delay: 0.16s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(3) { animation-delay: 0.32s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(4) { animation-delay: 0.48s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(5) { animation-delay: 0.64s; }
+
+.kartochka-tovara:hover .tochki-skoroo i {
+  animation-duration: 0.8s;
+}
+
+@keyframes pryzhok-tochki {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.35;
+    text-shadow: none;
+  }
+  30% {
+    transform: translateY(-16px) scale(1.35);
+    opacity: 1;
+    text-shadow: 0 10px 20px var(--neon-glow);
+  }
+  55% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tochki-skoroo i {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.zvezdochki {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.zvezdochki span {
+  color: var(--text-muted);
+}
+
+.cena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.kartochka-tovara:hover .cena {
+  color: var(--neon);
+  text-shadow: 0 0 14px var(--neon-glow);
+}
+
+.staraya-cena {
+  color: var(--text-dim);
+  text-decoration: line-through;
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+.skidka-teg {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 50px;
+  margin-left: 4px;
+  vertical-align: middle;
+  text-shadow: 0 0 8px var(--neon-glow);
+}
+
+.centr-knopka a {
+  display: inline-block;
+  border: 1px solid var(--border);
+  padding: 10px 40px;
+  border-radius: 50px;
+  color: var(--text);
+  text-decoration: none;
+  margin-top: 30px;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.centr-knopka a:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 16px var(--neon-glow);
+}
+
+.liniya-razdelitela {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 1024px) {
+  .setka-tovarov {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sekciya-tovarov {
+    margin: 40px auto;
+  }
+
+  .zagolovok-sekcii {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .setka-tovarov {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .fon-kartinki {
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .kartochka-tovara h3 {
+    font-size: 16px;
+  }
+
+  .nazvanie-skoroo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .cena {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .knopki-kartochki {
+    opacity: 1;
+    bottom: 8px;
+  }
+
+  .znachok-kartochki {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sekciya-tovarov {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .zagolovok-sekcii {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .setka-tovarov {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .fon-kartinki {
+    padding: 10px;
+    border-radius: 12px;
+    aspect-ratio: 3/4;
+  }
+
+  .kartochka-tovara h3 {
+    font-size: 14px;
+  }
+
+  .nazvanie-skoroo {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .zvezdochki {
+    font-size: 12px;
+  }
+
+  .cena {
+    font-size: 11px;
+    padding: 5px 8px;
+    gap: 4px;
+  }
+
+  .staraya-cena {
+    font-size: 10px;
+    margin-left: 3px;
+  }
+
+  .skidka-teg {
+    font-size: 9px;
+    padding: 1px 6px;
+    margin-left: 3px;
+  }
+
+  .centr-knopka a {
+    padding: 8px 30px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}

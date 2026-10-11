@@ -1,0 +1,39 @@
+.app-container {
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+.polosa-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 2000;
+  background: linear-gradient(90deg, var(--neon), var(--red-deep), var(--neon));
+  background-size: 200% 100%;
+  animation: progressBlesk 2.5s linear infinite;
+  box-shadow: 0 0 12px var(--neon-glow);
+  border-radius: 0 3px 3px 0;
+}
+
+@keyframes progressBlesk {
+  from { background-position: 0% 50%; }
+  to { background-position: 200% 50%; }
+}
+
+.stranitsa-fade {
+  animation: pageFadeIn 0.4s ease;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

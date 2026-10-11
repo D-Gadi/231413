@@ -1,0 +1,147 @@
+.sekciya-otzivov {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.shapka-otzivov {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.zagolovok-otzivov {
+  font-size: 40px;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.galochka-ok {
+  color: var(--neon);
+  margin-left: 4px;
+}
+
+.polosa-s-otzivami {
+  overflow: hidden;
+  margin: 0 -20px;
+  padding: 10px 20px;
+}
+
+.begushchie-otzivi {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: krugiOtzivov 55s linear infinite;
+}
+
+.begushchie-otzivi:hover {
+  animation-play-state: paused;
+}
+
+@keyframes krugiOtzivov {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.otziv-kartochka {
+  width: 380px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  flex-shrink: 0;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.otziv-kartochka:hover {
+  transform: translateY(-4px);
+  border-color: var(--neon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 22px var(--neon-glow);
+}
+
+.zvezdi-otziva {
+  font-size: 18px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 6px var(--neon-glow));
+}
+
+.imya-klienta {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.text-otziva {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .zagolovok-otzivov {
+    font-size: 34px;
+  }
+
+  .otziv-kartochka {
+    width: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sekciya-otzivov {
+    margin: 40px auto;
+  }
+
+  .shapka-otzivov {
+    margin-bottom: 25px;
+  }
+
+  .zagolovok-otzivov {
+    font-size: 28px;
+  }
+
+  .otziv-kartochka {
+    width: 280px;
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .zvezdi-otziva {
+    font-size: 16px;
+  }
+
+  .imya-klienta {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sekciya-otzivov {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .zagolovok-otzivov {
+    font-size: 24px;
+  }
+
+  .otziv-kartochka {
+    width: 260px;
+    padding: 20px;
+  }
+
+  .zvezdi-otziva {
+    font-size: 14px;
+  }
+
+  .imya-klienta {
+    font-size: 15px;
+  }
+
+  .text-otziva {
+    font-size: 14px;
+  }
+}
